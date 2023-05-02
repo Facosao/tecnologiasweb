@@ -1,0 +1,193 @@
+ /*Criei classes para serem referenciadas no css (class="")*/
+ /*Importei fontes pelo https://fonts.google.com/ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  body {
+    font-size: 100%;
+    background: linear-gradient(68.15deg, #0c0c0c 16.62%, #413c77 85.61%);
+  }
+
+  .cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+  }
+
+  .cabecalho-imagem {
+    height: 72px;
+  }
+  
+  .cabecalho-menu {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .cabecalho-menu-item {
+    font-family: 'Sarala', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 18px
+  }
+
+  .conteudo {
+    margin-bottom: 48px;
+    border-top: 0.4px solid white;
+  }
+  
+  .conteudo-principal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .conteudo-principal-escrito {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .conteudo-principal-escrito-titulo {
+    font-family: 'Righteous', cursive;
+    font-weight: 400;
+    font-size: 64px;
+    color: white;
+  }
+  
+  .conteudo-principal-escrito-subtitulo {
+    font-family: 'Sarala', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .conteudo-principal-escrito-botao {
+    background-color: white;
+    width: 180px;
+    height: 60px;
+    border: none;
+    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-family: 'Sarala', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: #2F2325;
+  }
+  
+  .conteudo-principal-escrito-botao:hover {
+    background-color: rgba(236, 214, 196, 0.53);
+  }
+  
+  .conteudo-principal-imagem {
+    height: 430px;
+  }
+  
+  .conteudo-secundario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  
+  .conteudo-secundario-titulo {
+    border-top: 0.4px solid white;
+    padding-top: 48px;
+    font-family: 'Righteous', cursive;
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 16px;
+  }
+  
+  .conteudo-secundario-paragrafo {
+    font-family: 'Sarala', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+  }
+  
+  .rodape {
+      padding: 32px;
+      border-top: 0.4px solid white;
+  }
+  
+  .rodape-imagem {
+    height: 48px;
+    display: block;
+    margin: 0 auto;
+  }
+
+
+  .conteudo-principal-paragrafo {
+    font-family: 'Sarala', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+  }
+
+
+
+/*ao clicar em leia mais a altura do post precisa expandir */
+/* Estilos para o conteúdo do post */
+.post {
+    background-color: #cbcdda; /* Fundo branco */
+    border: 1px solid #000; /* Borda preta de 1 pixel */
+    border-radius: 5px; /* Borda arredondada com raio de 5 pixels */
+    padding: 20px; /* Espaçamento interno para o conteúdo do post */
+    margin-bottom: 10px; /* Espaçamento inferior entre os posts */
+    width: 900px; /* Largura do post */
+    height: 700px; /* Altura do post */
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: auto; /* Centraliza horizontalmente */
+    font-family: 'Righteous', cursive;
+    font-weight: 400;
+    font-size: 20px;
+    color: #000000;
+  }
+ /*
+  .post.expandido {
+    max-height: none;
+  }
+  .post-fechar {
+    display: none;
+  }
+  */
+
+  
+  /* Define a largura do conteúdo e centraliza-o */
+.conteudo {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Define a cor do texto do título e o alinhamento */
+.post-titulo {
+  background-color: #00f; /* Barra azul para o título */
+  color: #fff; /* Cor do texto do título */
+  padding: 10px; /* Espaçamento interno para o título */
+  margin: 0; /* Remover margem padrão do título */
+}
+
+/* Define a cor e o tamanho do texto de data */
+.post-data {
+  color: #999;
+  font-size: 19px;
+}
+
+/* Define a cor do texto do subtítulo */
+.post-subtitulo {
+  color: red;
+  font-size: 20px;
+}
+
