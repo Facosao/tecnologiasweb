@@ -1,66 +1,68 @@
-/*
- formulario de cadastro que realiza validações em tempo real dos campos preenchidos pelo usuário 
- e também faz o armazenamento desses dados no LocalStorage do navegador
+let btn = document.querySelector('#verSenha');
+let btnConfirm = document.querySelector('#verConfirmSenha');
 
- O código verifica se os campos "nome", "usuário", "senha" e "confirmar senha" estão preenchidos 
- corretamente. Ele também fornece a funcionalidade de mostrar/ocultar a senha e a confirmação de senha
-*/
+// TODO: Nome deveria ser validado
+let nome = document.querySelector('#nome');
 
-let btn = document.querySelector('#verSenha')
-let btnConfirm = document.querySelector('#verConfirmSenha')
+let email = document.querySelector('#email');
+let labelEmail = document.querySelector('#labelEmail');
+let validEmail = false;
 
+let senha = document.querySelector('#senha');
+let labelSenha = document.querySelector('#labelSenha');
+let validSenha = false;
 
-let nome = document.querySelector('#nome')
-let labelNome = document.querySelector('#labelNome')
-let validNome = false
+let confirmSenha = document.querySelector('#confirmSenha');
+let labelConfirmSenha = document.querySelector('#labelConfirmSenha');
+let validConfirmSenha = false;
 
-let usuario = document.querySelector('#usuario')
-let labelUsuario = document.querySelector('#labelUsuario')
-let validUsuario = false
+let msgError = document.querySelector('#msgError');
+let msgSuccess = document.querySelector('#msgSuccess');
 
-let senha = document.querySelector('#senha')
-let labelSenha = document.querySelector('#labelSenha')
-let validSenha = false
-
-let confirmSenha = document.querySelector('#confirmSenha')
-let labelConfirmSenha = document.querySelector('#labelConfirmSenha')
-let validConfirmSenha = false
-
-let msgError = document.querySelector('#msgError')
-let msgSuccess = document.querySelector('#msgSuccess')
-
-nome.addEventListener('keyup', () => {
-  if(nome.value.length <= 2){
-    labelNome.setAttribute('style', 'color: red')
-    labelNome.innerHTML = 'Nome *Insira no minimo 3 caracteres'
-    nome.setAttribute('style', 'border-color: red')
-    validNome = false
+email.addEventListener('keyup', () => {
+  /*
+  if (validateEmail(email.value)) {
+    // Deveria verificar se o e-mail usado já existe
+    labelEmail.setAttribute('style', 'color: green')
+    labelEmail.innerHTML = 'Email'
+    email.setAttribute('style', 'border-color: green')
+    validEmail = true
   } else {
-    labelNome.setAttribute('style', 'color: green')
-    labelNome.innerHTML = 'Nome'
-    nome.setAttribute('style', 'border-color: green')
-    validNome = true
+    labelEmail.setAttribute('style', 'color: red')
+    labelEmail.innerHTML = 'Email *Insira um email válido'
+    email.setAttribute('style', 'border-color: red')
+    validEmail = false
   }
-})
+  */
 
-usuario.addEventListener('keyup', () => {
-  if(usuario.value.length <= 4){
-    labelUsuario.setAttribute('style', 'color: red')
-    labelUsuario.innerHTML = 'Usuário *Insira no minimo 5 caracteres'
-    usuario.setAttribute('style', 'border-color: red')
-    validUsuario = false
-  } else {
-    labelUsuario.setAttribute('style', 'color: green')
-    labelUsuario.innerHTML = 'Usuário'
-    usuario.setAttribute('style', 'border-color: green')
-    validUsuario = true
+  switch (validateEmail(email.value)) {
+    case "email-valido":
+      labelEmail.setAttribute('style', 'color: green');
+      labelEmail.innerHTML = 'Email';
+      email.setAttribute('style', 'border-color: green');
+      validEmail = true;
+      break;
+
+    case "email-em-uso":
+      labelEmail.setAttribute('style', 'color: red');
+      labelEmail.innerHTML = 'Email *Este email já está em uso';
+      email.setAttribute('style', 'border-color: red');
+      validEmail = false;
+      break;
+
+    case "email-invalido":
+      labelEmail.setAttribute('style', 'color: red');
+      labelEmail.innerHTML = 'Email *Insira um email válido';
+      email.setAttribute('style', 'border-color: red');
+      validEmail = false;
+      break;
   }
 })
 
 senha.addEventListener('keyup', () => {
-  if(senha.value.length <= 5){
+  if (senha.value.length <= 5) {
     labelSenha.setAttribute('style', 'color: red')
-    labelSenha.innerHTML = 'Senha *Insira no minimo 6 caracteres'
+    labelSenha.innerHTML = 'Senha *Insira no mínimo 6 caracteres'
     senha.setAttribute('style', 'border-color: red')
     validSenha = false
   } else {
@@ -72,7 +74,7 @@ senha.addEventListener('keyup', () => {
 })
 
 confirmSenha.addEventListener('keyup', () => {
-  if(senha.value != confirmSenha.value){
+  if (senha.value !== confirmSenha.value) {
     labelConfirmSenha.setAttribute('style', 'color: red')
     labelConfirmSenha.innerHTML = 'Confirmar Senha *As senhas não conferem'
     confirmSenha.setAttribute('style', 'border-color: red')
@@ -85,55 +87,73 @@ confirmSenha.addEventListener('keyup', () => {
   }
 })
 
-function cadastrar(){
-  if(validNome && validUsuario && validSenha && validConfirmSenha){
-    let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]')
-    
-    listaUser.push(
-    {
-      nomeCad: nome.value,
-      userCad: usuario.value,
-      senhaCad: senha.value
-    }
-    )
-    
-    localStorage.setItem('listaUser', JSON.stringify(listaUser))
-    
-   
-    msgSuccess.setAttribute('style', 'display: block')
-    msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>'
-    msgError.setAttribute('style', 'display: none')
-    msgError.innerHTML = ''
-    
-    setTimeout(()=>{
-        window.location.href = '../html/signin.html'
-    }, 3000)
-  
-    
+function cadastrar() {
+  if (validEmail && validSenha && validConfirmSenha) {
+    let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]');
+
+    listaUser.push({
+      nome: nome.value,
+      email: email.value,
+      senha: senha.value
+    });
+
+    localStorage.setItem('listaUser', JSON.stringify(listaUser));
+
+    msgSuccess.setAttribute('style', 'display: block');
+    msgSuccess.innerHTML = '<strong>Cadastrando usuário...</strong>';
+    msgError.setAttribute('style', 'display: none');
+    msgError.innerHTML = '';
+
+    setTimeout(() => {
+      window.location.href = '../html/signin.html';
+    }, 2000);
   } else {
-    msgError.setAttribute('style', 'display: block')
-    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>'
-    msgSuccess.innerHTML = ''
-    msgSuccess.setAttribute('style', 'display: none')
+    msgError.setAttribute('style', 'display: block');
+    msgError.innerHTML = '<strong>Preencha todos os campos corretamente antes de cadastrar</strong>';
+    msgSuccess.innerHTML = '';
+    msgSuccess.setAttribute('style', 'display: none');
   }
 }
 
-btn.addEventListener('click', ()=>{
-  let inputSenha = document.querySelector('#senha')
-  
-  if(inputSenha.getAttribute('type') == 'password'){
-    inputSenha.setAttribute('type', 'text')
+btn.addEventListener('click', () => {
+  let inputSenha = document.querySelector('#senha');
+
+  if (inputSenha.getAttribute('type') == 'password') {
+    inputSenha.setAttribute('type', 'text');
   } else {
-    inputSenha.setAttribute('type', 'password')
+    inputSenha.setAttribute('type', 'password');
   }
 })
 
-btnConfirm.addEventListener('click', ()=>{
-  let inputConfirmSenha = document.querySelector('#confirmSenha')
-  
-  if(inputConfirmSenha.getAttribute('type') == 'password'){
-    inputConfirmSenha.setAttribute('type', 'text')
+btnConfirm.addEventListener('click', () => {
+  let inputConfirmSenha = document.querySelector('#confirmSenha');
+
+  if (inputConfirmSenha.getAttribute('type') == 'password') {
+    inputConfirmSenha.setAttribute('type', 'text');
   } else {
-    inputConfirmSenha.setAttribute('type', 'password')
+    inputConfirmSenha.setAttribute('type', 'password');
   }
 })
+
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+
+  if (re.test(email)) {
+    let returnMessage = "email-valido";
+    let listaUser = JSON.parse(localStorage.getItem('listaUser'));
+    
+    if (listaUser != null) {
+      listaUser.forEach((item) => {
+        if (item.email == email){
+          returnMessage = "email-em-uso";
+          return;
+        }
+      })
+    }
+    
+    return returnMessage;
+  } else {
+    return "email-invalido";
+  }
+
+}

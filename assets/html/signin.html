@@ -1,6 +1,4 @@
-<!--
-   formulário com campos para usuário e senha
--->
+<!-- Formulário com campos para email e senha -->
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -12,7 +10,7 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="../css/signin.css" />
-    <title>Singin</title>
+    <title>Sign-in</title>
   </head>
   <body>
     <div class="container">
@@ -22,13 +20,13 @@
         <div id="msgError"></div>
 
         <div class="label-float">
-          <input type="text" id="usuario" paceholder="" required />
-          <label id="userLabel" for="usuario">Usuario</label>
+          <input type="text" id="email" name="email" placeholder="" required />
+          <label for="email">Email</label>
         </div>
 
         <div class="label-float">
-          <input type="password" id="senha" paceholder="" required />
-          <label id="senhaLabel" for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="" required />
+          <label for="senha">Senha</label>
           <i class="fa fa-eye" aria-hidden="true"></i>
         </div>
 
@@ -46,6 +44,10 @@
             Cadastre-se
           </a>
         </p>
+
+        <div class="justify-center">
+          <a href="./recuperar_senha.html">Recuperar Senha</a>
+        </div>
       </div>
     </div>
 
