@@ -24,3 +24,7 @@ function Sair() {
   localStorage.removeItem("userLogado");
   window.location.href = signin_str;
 }
+
+function vagas() {
+  window.location.href = "./assets/html/vagas.html";
+}
