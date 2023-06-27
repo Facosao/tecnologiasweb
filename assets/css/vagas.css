@@ -15,6 +15,24 @@
     background: linear-gradient(68.15deg, #0c0c0c 16.62%, #413c77 85.61%);
   }
 
+  button {
+    background-color: #0d009c;
+    border-color: #272262;
+    color: #fff;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 12pt;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all .4s ease-out;
+  }
+
+  button:hover {
+    background-color: #ffffff80;
+    color: #0d009c;
+  }
+
   .cabecalho {
     display: flex;
     flex-direction: row;
